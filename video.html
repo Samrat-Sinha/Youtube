@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        iframe{
+            height: 600px;
+        }
+        h4{
+            color: white;
+        }
+        body{
+         background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <div id="bar"><i class='fas fa-bars'></i></div> 
+        <div id="yt_icon"> <span><i class="fa-brands fa-youtube"></i></span><span style="color: white;font-family: sans-serif ;font-weight: bold;">YouTube </span> </div>
+       <div id="show"></div>
+    </body>
+</html>
+
+<script>
+
+
+    let data = JSON.parse(localStorage.getItem("ytvideo"));
+    
+    data.map(({name,video})=>{
+     let box = document.createElement("div");
+     let iframe = document.createElement("iframe");
+     iframe.src = `https://www.youtube.com/embed/${video}`;
+     iframe.width = "100%";
+     iframe.height = "100%";
+     iframe.allow = "fullscreen" ;
+     let title = document.createElement("h4");
+     title.innerText = name;
+     box.append(iframe,title);
+     document.querySelector("#show").append(box)
+     
+    })
+</script>
